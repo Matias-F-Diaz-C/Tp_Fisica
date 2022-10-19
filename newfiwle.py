@@ -38,6 +38,7 @@ for i in range(num_etapas):
         tf_tiempo = True
         tiempo = float(input("Introduzca el tiempo: "))
     
+    ## ESTO ES UN COMETARIO
    
     if i == 0: 
         #Velocidad inicial
