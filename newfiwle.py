@@ -3,16 +3,37 @@ import numpy as np
 import time
 import os
 
-#Nos pidieron hacer una función cualquiera, yo la hice para calcular la distancia de la etapa :D
-def cal_dist(v,t,a):
-    val= v*t+0.5*a*(t**2)
-    return val
+def grafico(vi,ac,tm):
+    fig, (gf1, gf2) = plt.subplots(2, 1)
+    X = np.linspace(0, tm)
+    fig.suptitle(None)
+
+    Y1 = vi * X + 0.5 * ac * (X ** 2)  # Formula distancia
+    gf1.plot(X, Y1, marker=".", color="red")
+    gf1.grid()
+    gf1.set_title("Distancia")
+    gf1.set_ylabel("Metros")
+    gf1.set_xlabel("Segundos")
+
+    Y2 = (ac * X) + vi  # Formula velocidad
+    gf2.plot(X, Y2, marker=".")
+    gf2.grid()
+    gf2.set_title("Velocidad")
+    gf2.set_ylabel("Metros/segundo")
+    gf2.set_xlabel("Segundos")
+
+    plt.subplots_adjust(hspace=0.4)
+    plt.show()
+
+    print(type(gf1))
+
+    return time.sleep(0.1)
 
 dis_total=0
-while True: #Solo para que no pare de preguntar hasta que se cumpla la condición*
+while True:
     num_etapas = int(input("Ingrese el numero de etapas: "))
     if num_etapas >= 3: break #condición
-    print("NOO")
+    print("Tiene que ser mayor a 3 jaja")
 for i in range(num_etapas):
 
     print(f"Inicio de la etapa n°{i+1}")
@@ -96,34 +117,12 @@ for i in range(num_etapas):
         print("La aceleracion es de:",acel)
 
 
-    dis_etapa = cal_dist(vel_ini, tiempo, acel)
+    dis_etapa = vel_ini*tiempo+0.5*acel*(tiempo**2)
     print(f"La distancia recorrida es de: {dis_etapa}\n")
     dis_total += dis_etapa
-    time.sleep(1) #darle tiempo a q lo vea jaja
-    #GRAFICADO#
-    fig, (gf1,gf2) = plt.subplots(2,1)
-    X = np.linspace(0,tiempo)
-    fig.suptitle(None)
+    time.sleep(1)
 
-    Y1 = vel_ini*X+0.5*acel*(X**2)  #Formula distancia
-    gf1.plot(X,Y1,marker = ".",color = "red")
-    gf1.grid()
-    gf1.set_title("Distancia")
-    gf1.set_ylabel("Metros")
-    gf1.set_xlabel("Segundos")
+    grafico(vel_ini,acel,tiempo)
 
-    Y2 = (acel * X) + vel_ini  # Formula velocidad
-    gf2.plot(X,Y2, marker = "x")
-    gf2.grid()
-    gf2.set_title("Velocidad")
-    gf2.set_ylabel("Metros/segundo")
-    gf2.set_xlabel("Segundos")
-
-    plt.subplots_adjust(hspace=0.4)
-    plt.show()
-
-    ##clear de la pantalla
-
-    time.sleep(0.1)
     input("Enter para continuar")
     os.system('cls')
