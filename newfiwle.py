@@ -22,7 +22,7 @@ def grafico(vi,ac,tm):
     gf2.set_ylabel("Metros/segundo")
     gf2.set_xlabel("Segundos")
 
-    plt.subplots_adjust(hspace=0.4)
+    plt.subplots_adjust(hspace=0.6)
     plt.show()
 
     return time.sleep(0.1)
