@@ -25,8 +25,6 @@ def grafico(vi,ac,tm):
     plt.subplots_adjust(hspace=0.4)
     plt.show()
 
-    print(type(gf1))
-
     return time.sleep(0.1)
 
 dis_total=0
