@@ -25,8 +25,6 @@ def grafico(vi,ac,tm):
     plt.subplots_adjust(hspace=0.6)
     plt.show()
 
-    return time.sleep(0.1)
-
 dis_total=0
 while True:
     num_etapas = int(input("Ingrese el numero de etapas: "))
