@@ -79,6 +79,11 @@ for i in range(num_etapas):
     if tf_acel==True and tf_tiempo==True and tf_vel_ini==True:
             tf_vel_fin = False
     else:
+        if acel==0 and tf_tiempo==False:
+            print("Tiempo indeterminable porque la velocidad final no cambia, se pasa a la sig. etapa")
+            tf_vel_fin = True
+            vel_fin = vel_ini
+            continue
         if n_no==0:
             vel_fin_ver=input("Sabe la Velocidad Final?(Si/No): ")
             if vel_fin_ver.lower()=="si":
